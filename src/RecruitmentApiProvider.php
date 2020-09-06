@@ -2,6 +2,7 @@
 
 namespace Dmlogic\RecruitmentApi;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class RecruitmentApiProvider extends ServiceProvider
