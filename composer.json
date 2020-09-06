@@ -1,0 +1,41 @@
+{
+    "name": "dmlogic/recruitment-api",
+    "description": "Take job applications via a REST API",
+    "type": "library",
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dmlogic\\RecruitmentApi\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Seeds\\": "tests/database/seeds/",
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "orchestra/testbench": "^6"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dmlogic\\RecruitmentApi\\RecruitmentApiProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "phpunit": "./vendor/bin/phpunit",
+        "test": [
+            "@phpunit"
+        ]
+    },
+    "scripts-descriptions": {
+        "phpunit": "Runs php tests",
+        "test": "Runs full test suite"
+    }
+}
