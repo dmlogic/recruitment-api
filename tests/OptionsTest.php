@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-
 class OptionsTest extends IntegrationTest
 {
     /**
@@ -11,7 +10,7 @@ class OptionsTest extends IntegrationTest
     public function root_options_returns_expected_response()
     {
         $response = $this->options('/recruitment');
-        // dump($response);
         $response->assertStatus(200);
+        $response->assertSeeText("You've found the instructions for submitting a job application",false);
     }
 }

@@ -10,7 +10,13 @@ class RecruitmentApiProvider extends ServiceProvider
     public function boot()
     {
         $this->registerRoutes();
+        $this->registerViews();
         $this->registerBindings();
+    }
+
+    protected function registerViews()
+    {
+        $this->loadViewsFrom(__DIR__.'/../views', 'recruitment');
     }
 
     protected function registerRoutes()

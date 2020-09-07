@@ -1,5 +1,6 @@
 <?php
 
+Illuminate\Support\Facades\Route::get('/', 'ApplicationController@welcome');
 Illuminate\Support\Facades\Route::options('/', 'ApplicationController@docs');
 Illuminate\Support\Facades\Route::post('/', 'ApplicationController@create');
 Illuminate\Support\Facades\Route::get('/{applicationId}', 'ApplicationController@view');
