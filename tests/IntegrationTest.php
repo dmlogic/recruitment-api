@@ -12,7 +12,7 @@ abstract class IntegrationTest extends BaseTest
     protected function setUp(): void
     {
         parent::setUp();
-        // $this->loadMigrationsFrom(DOC_ROOT.'tests/database/migrations');
+        $this->loadMigrationsFrom(DOC_ROOT.'database/migrations');
         // $this->withFactories(DOC_ROOT.'tests/database/factories');
         $this->bindDependencies();
         // app()->make('Seeds\GroupsSeeder')->run();
