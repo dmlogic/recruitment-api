@@ -5,6 +5,7 @@ namespace Dmlogic\RecruitmentApi\Http\Requests;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\JsonResponse;
 use Dmlogic\RecruitmentApi\Models\Application;
@@ -22,9 +23,10 @@ class UpdateApplication extends FormRequest
                 response()->json(['errors' => ['This application has aleady been confirmed']], JsonResponse::HTTP_UNPROCESSABLE_ENTITY)
             );
         }
-
         if(!$attributes = Arr::only($this->all(),['name','cover_letter','cv','code_example'])) {
-            return;
+            throw new HttpResponseException(
+                response()->json(['errors' => ['No submitted data was detected']], JsonResponse::HTTP_UNPROCESSABLE_ENTITY)
+            );
         }
         $application->fill($attributes);
         $application->save();

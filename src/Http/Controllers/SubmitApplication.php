@@ -17,7 +17,7 @@ class SubmitApplication extends BaseController
                 \View::make('recruitment::options_instructions',['uuid' => $request->attributes->get('application')->uuid]),
                 200)
                 ->header('Content-Type','text/plain')
-                ->header('Allow','OPTIONS, GET, PUT, PATCH')
+                ->header('Allow','OPTIONS, GET, PUT, PATCH, POST')
                 ->header('Accept','application/json, multipart/form-data, application/x-www-form-urlencoded');
     }
 
@@ -30,12 +30,8 @@ class SubmitApplication extends BaseController
     public function update(UpdateApplication $request)
     {
         $request->applyUpdate();
-    }
-
-    public function uploadCv(UploadRequest $request)
-    {
-        \Log::info('upload',[$request->headers]);
-        $request->storeFile();
+        return response()
+                ->json(['message' => 'Your application has been updated']);
     }
 
     public function confirm(Request $request)
@@ -47,6 +43,8 @@ class SubmitApplication extends BaseController
         }
         $application->confirmed_at = now();
         $application->save();
+        return response()
+                ->json(['message' => 'Your application has been confirmed']);
     }
 
 

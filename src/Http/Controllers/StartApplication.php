@@ -11,7 +11,8 @@ class StartApplication extends BaseController
 {
     public function welcome()
     {
-        return view('recruitment::welcome');
+        return \Response::make(\View::make('recruitment::welcome'),200)
+                ->header('Allow','OPTIONS, GET, POST');
     }
 
     public function docs()

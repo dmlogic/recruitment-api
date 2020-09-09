@@ -47,6 +47,15 @@ class SubmitApplicationTest extends IntegrationTest
     /**
      * @test
      */
+    public function access_with_mismatched_uuid_fails()
+    {
+        $response = $this->options(route('view',['uuid' => 'somethingelse']),[],$this->tokenHeader);
+        $response->assertStatus(401);
+    }
+
+    /**
+     * @test
+     */
     public function access_good_token_granted()
     {
         $response = $this->options($this->endpoint,[],$this->tokenHeader);
@@ -100,7 +109,7 @@ class SubmitApplicationTest extends IntegrationTest
             'email' => 'foofoo@example.com',
             'uuid' => 'bcd',
         ],$this->tokenHeader);
-        $response->assertStatus(200);
+        $response->assertStatus(422);
         $this->assertEquals($this->application->toArray(),Application::first()->toArray());
     }
 
