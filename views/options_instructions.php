@@ -30,14 +30,14 @@ We accept PDF file formats up to 2Mb in size
 
 Please POST your file to:
 
-<?=$endpoint?>/upload_cv
+<?=route('upload', ['uuid' => $uuid])?>
 
 REVIEWING YOUR APPLICATION
 
 Make a GET request to this endpoint to see progress
 
-CONFIRMINT YOUR APPLICATION
+CONFIRMING YOUR APPLICATION
 
 Once all fields are complete and you are happy, make a POST request to
 
-<?=$endpoint?>/confirm
+<?=route('confirm', ['uuid' => $uuid])?>
