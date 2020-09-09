@@ -5,7 +5,10 @@
 Now your application is started, you can send a request to this endpoint with
 the data described below. All fields are required before your application can
 be confirmed. We accept various types of submission to support a variety of
-http clients.
+http clients. See headers of this response for details. (Please note if you
+wish to use "multipart/form-data" content type, you must POST your data)
+
+### Applcation fields
 
 Field: name
 Description: Your full name
