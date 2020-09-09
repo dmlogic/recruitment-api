@@ -5,8 +5,6 @@ namespace Dmlogic\RecruitmentApi\Http\Controllers;
 use Illuminate\Http\Request;
 use Dmlogic\RecruitmentApi\Models\Application;
 use Illuminate\Routing\Controller as BaseController;
-use Dmlogic\RecruitmentApi\Http\Requests\UploadRequest;
-use Dmlogic\RecruitmentApi\Http\Requests\NewApplication;
 use Dmlogic\RecruitmentApi\Http\Requests\UpdateApplication;
 
 class SubmitApplication extends BaseController

@@ -25,10 +25,6 @@ class StartApplication extends BaseController
 
     public function create(NewApplication $request)
     {
-        if($existing = Application::where('email','=',$request->email)->where('position_reference','=',$request->reference)->first()) {
-            return response()
-                    ->json(['errors' => ['An application for this role is already in progress']],400);
-        }
         $application = $request->createApplication();
         $url = route('view',['uuid' => $application->uuid]);
         return response()
