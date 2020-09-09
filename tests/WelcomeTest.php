@@ -9,7 +9,7 @@ class WelcomeTest extends IntegrationTest
      */
     public function see_welcome_page()
     {
-        $response = $this->get('/recruitment');
+        $response = $this->get(route('welcome'));
         $response->assertStatus(200);
         $response->assertSeeText("You are looking at a REST API");
     }
@@ -19,7 +19,7 @@ class WelcomeTest extends IntegrationTest
      */
     public function root_options_returns_expected_response()
     {
-        $response = $this->options('/recruitment');
+        $response = $this->options(route('welcome'));
         $response->assertStatus(200);
         $response->assertSeeText("You've found the instructions for submitting a job application",false);
     }

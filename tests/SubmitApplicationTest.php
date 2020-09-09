@@ -19,7 +19,7 @@ class SubmitApplicationTest extends IntegrationTest
         parent::setUp();
         $this->position = Position::factory()->create();
         $this->application = Application::factory()->create(['email' => 'me@example.com','position_reference' => $this->position->reference]);
-        $this->endpoint = 'recruitment/'.$this->application->uuid;
+        $this->endpoint = route('view',['uuid' => $this->application->uuid]);
         $this->tokenHeader = ['Authorization' => 'Bearer '.$this->application->token];
     }
 

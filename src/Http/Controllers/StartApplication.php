@@ -29,13 +29,13 @@ class StartApplication extends BaseController
                     ->json(['errors' => ['An application for this role is already in progress']],400);
         }
         $application = $request->createApplication();
-        $url = '/recruitment/'.$application->uuid;
+        $url = route('view',['uuid' => $application->uuid]);
         return response()
                     ->json([
                         'token' => $application->token,
                         'application_url' => $url
                     ],201)
-                    ->header('Location','/recruitment/'.$application->uuid);
+                    ->header('Location',$url);
     }
 
 }

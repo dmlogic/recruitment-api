@@ -24,7 +24,7 @@ class RecruitmentApiProvider extends ServiceProvider
     {
         $this->app['router']->aliasMiddleware('verify_application', VerifyApplication::class);
         Route::group([
-            'prefix'     => 'recruitment',
+            'prefix'     => 'apply',
             'namespace'  => 'Dmlogic\RecruitmentApi\Http\Controllers',
         ], function () {
             $this->loadRoutesFrom(__DIR__.'/Http/routes.php');

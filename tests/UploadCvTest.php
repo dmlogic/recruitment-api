@@ -16,7 +16,7 @@ class UploadCvTest extends IntegrationTest
     {
         parent::setUp();
         $this->application = Application::factory()->create(['email' => 'me@example.com','position_reference' => 'abc']);
-        $this->endpoint = 'recruitment/'.$this->application->uuid.'/upload_cv';
+        $this->endpoint = route('upload',['uuid' => $this->application->uuid]);
         $this->tokenHeader = ['Authorization' => 'Bearer '.$this->application->token];
         Storage::fake('cv_uploads');
     }
