@@ -4,6 +4,7 @@ namespace Dmlogic\RecruitmentApi;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Dmlogic\RecruitmentApi\Http\Middleware\VerifyApplication;
 
 class RecruitmentApiProvider extends ServiceProvider
 {
@@ -21,6 +22,7 @@ class RecruitmentApiProvider extends ServiceProvider
 
     protected function registerRoutes()
     {
+        $this->app['router']->aliasMiddleware('verify_application', VerifyApplication::class);
         Route::group([
             'prefix'     => 'recruitment',
             'namespace'  => 'Dmlogic\RecruitmentApi\Http\Controllers',

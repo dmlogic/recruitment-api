@@ -55,7 +55,11 @@ class NewApplicationTest extends IntegrationTest
     {
         $position = Position::factory()->create();
         $response = $this->postJson('/recruitment', ['email' => 'me@example.com', 'reference' => $position->reference]);
-        $response->assertStatus(201);
+        $response->assertStatus(201)
+                 ->assertJsonStructure([
+                    'token',
+                    'application_url'
+                ]);
 
         $application = Application::first();
         $this->assertSame('/recruitment/'.$application->uuid,$response->headers->get('location'));

@@ -17,8 +17,9 @@ class CreateApplicationsTable extends Migration
             $table->string('name')->nullable();
             $table->text('cover_letter')->nullable();
             $table->text('cv')->nullable();
+            $table->text('cv_upload')->nullable();
             $table->text('code_example')->nullable();
-            $table->datetime('submitted_at')->nullable();
+            $table->datetime('confirmed_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -2,7 +2,9 @@
 
 namespace Tests;
 
+use Illuminate\Support\Str;
 use Orchestra\Testbench\TestCase as BaseTest;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 abstract class IntegrationTest extends BaseTest
 {
@@ -13,10 +15,18 @@ abstract class IntegrationTest extends BaseTest
     {
         parent::setUp();
         $this->loadMigrationsFrom(DOC_ROOT.'database/migrations');
-        // $this->withFactories(DOC_ROOT.'tests/database/factories');
+        $this->setFactoryLocation();
         $this->bindDependencies();
         // app()->make('Seeds\GroupsSeeder')->run();
         // app()->make('Seeds\UserUploadSeeder')->run();
+    }
+
+    protected function setFactoryLocation()
+    {
+        Factory::guessFactoryNamesUsing(function($modelName) {
+            $factoryName = 'Database\\Factories\\'.Str::after($modelName, '\\Models\\').'Factory';
+            return $factoryName;
+        });
     }
 
     protected function getPackageProviders($app)

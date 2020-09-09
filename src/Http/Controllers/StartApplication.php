@@ -7,7 +7,7 @@ use Dmlogic\RecruitmentApi\Models\Application;
 use Illuminate\Routing\Controller as BaseController;
 use Dmlogic\RecruitmentApi\Http\Requests\NewApplication;
 
-class ApplicationController extends BaseController
+class StartApplication extends BaseController
 {
     public function welcome()
     {
@@ -17,18 +17,25 @@ class ApplicationController extends BaseController
     public function docs()
     {
         return \Response::make(\View::make('recruitment::options_root'),200)
-                        ->header('Content-Type','text/plain');
+                        ->header('Content-Type','text/plain')
+                        ->header('Allow','OPTIONS, GET, POST')
+                        ->header('Accept','application/json, multipart/form-data, application/x-www-form-urlencoded');
     }
 
     public function create(NewApplication $request)
     {
         if($existing = Application::where('email','=',$request->email)->where('position_reference','=',$request->reference)->first()) {
             return response()
-                    ->json(['error' => 'An application for this role is already in progress'],400);
+                    ->json(['errors' => ['An application for this role is already in progress']],400);
         }
         $application = $request->createApplication();
+        $url = '/recruitment/'.$application->uuid;
         return response()
-                    ->json(['token' => $application->token],201)
+                    ->json([
+                        'token' => $application->token,
+                        'application_url' => $url
+                    ],201)
                     ->header('Location','/recruitment/'.$application->uuid);
     }
+
 }

@@ -2,7 +2,7 @@
 
 This is a Laravel package that provides a REST API to receive applications for job positions.
 
-The idea with this package is advertise the the endpoint, give the applicant whatever information we choose with a welcome view and let them figure it out from there. If they can, at least some of our filtering job is done.
+The idea with this package is advertise the endpoint, give the applicant whatever information we choose with a welcome view and let them figure it out from there. If they can, at least some of our candidate filtering is done.
 
 ## Installation
 

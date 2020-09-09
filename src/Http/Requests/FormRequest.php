@@ -10,6 +10,11 @@ use Illuminate\Foundation\Http\FormRequest as LaravelRequest;
 
 class FormRequest extends LaravelRequest
 {
+    public function authorize()
+    {
+        return true;
+    }
+
     /**
      * Handle a failed validation attempt.
      *

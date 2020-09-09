@@ -27,7 +27,6 @@ class ApplicationFactory extends Factory
             'uuid' => $this->faker->uuid,
             'token' => Str::random(),
             'email' => $this->faker->safeEmail,
-            'name' => $this->faker->name
         ];
     }
 }
