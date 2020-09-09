@@ -24,6 +24,15 @@ class UploadCvTest extends IntegrationTest
     /**
      * @test
      */
+    public function see_options()
+    {
+        $response = $this->options($this->endpoint,[],$this->tokenHeader );
+        $response->assertStatus(200);
+    }
+
+    /**
+     * @test
+     */
     public function non_pdf_fails()
     {
         $file = UploadedFile::fake()->image('avatar.jpg');
