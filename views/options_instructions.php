@@ -26,8 +26,11 @@ Format: Text
 
 UPLOADING YOUR CV
 
-@todo
-Accept only PDF
+We accept PDF file formats up to 2Mb in size
+
+Please POST your file to:
+
+<?=$endpoint?>/upload_cv
 
 REVIEWING YOUR APPLICATION
 
@@ -37,4 +40,4 @@ CONFIRMINT YOUR APPLICATION
 
 Once all fields are complete and you are happy, make a POST request to
 
-<?=$submit_url?>
+<?=$endpoint?>/confirm

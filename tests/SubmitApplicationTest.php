@@ -52,7 +52,8 @@ class SubmitApplicationTest extends IntegrationTest
         $response = $this->options($this->endpoint,[],$this->tokenHeader);
         $response->assertStatus(200);
         $response->assertSee('YOUR APPLICATION');
-        $response->assertSee('recruitment/'.$this->application->uuid.'/confirm');
+        $response->assertSee( route('upload',['uuid' => $this->application->uuid]));
+        $response->assertSee( route('confirm',['uuid' => $this->application->uuid]));
     }
 
     /**

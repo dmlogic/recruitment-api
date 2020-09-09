@@ -2,8 +2,6 @@ CONGRALUTATIONS
 
 You've found the instructions for submitting a job application.
 
-We gave you a pretty big clue though, so there's more to do.
-
 To start, you need to POST a request to this endpoint.
 Include data containing your `email` and the `reference`
 of the position you wish to apply for.

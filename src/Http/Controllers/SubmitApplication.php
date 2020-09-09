@@ -14,7 +14,7 @@ class SubmitApplication extends BaseController
     public function instructions(Request $request)
     {
         return \Response::make(
-                \View::make('recruitment::options_instructions',['submit_url' => '/recruitment/'.$request->attributes->get('application')->uuid.'/confirm']),
+                \View::make('recruitment::options_instructions',['endpoint' => route('view',['uuid' => $request->attributes->get('application')->uuid])]),
                 200)
                 ->header('Content-Type','text/plain')
                 ->header('Allow','OPTIONS, GET, PUT, PATCH')
