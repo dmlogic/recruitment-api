@@ -16,12 +16,12 @@ Format: Text
 
 Field: cover_letter
 Description: Introduce yourself & explain why you are interested in this role
-Format: Text
+Format: Text (multi line acceptable)
 
 Field: cv
 Description: An up-to-date CV/Resume
-Format: We accept plain text or URL. If you would prefer to upload a file, see
-        "UPLOADING YOUR CV" below
+Format: We accept plain text  (multi line acceptable) or a URL. If you would
+        prefer to upload a file, see "UPLOADING YOUR CV" below
 
 Field: code_examples
 Description: Links to examples of relevant code, this would typically be a
@@ -29,7 +29,7 @@ Description: Links to examples of relevant code, this would typically be a
              field to persuade us we should still consider you. We understand
              that not all work can be in the public domain but this is a
              senior position and we need to know you can code.
-Format: Text
+Format: Text (multi line acceptable)
 
 ## UPLOADING YOUR CV
 
