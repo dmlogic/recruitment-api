@@ -48,7 +48,7 @@ class NewApplicationTest extends IntegrationTest
         $position = Position::factory()->create();
         $application = Application::factory()->create(['email' => 'me@example.com','position_reference' => $position->reference]);
         $response = $this->postJson(route('create'), ['email' => 'me@example.com', 'reference' => $position->reference]);
-        $response->assertStatus(400);
+        $response->assertStatus(409);
 
         Event::assertDispatched(function (ApplicationCreated $event) use ($application) {
             return $event->application->uuid === $application->uuid
