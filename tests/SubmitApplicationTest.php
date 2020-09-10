@@ -4,8 +4,10 @@ namespace Tests;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Event;
 use Dmlogic\RecruitmentApi\Models\Position;
 use Dmlogic\RecruitmentApi\Models\Application;
+use Dmlogic\RecruitmentApi\Events\ApplicationConfirmed;
 
 class SubmitApplicationTest extends IntegrationTest
 {
@@ -173,11 +175,17 @@ class SubmitApplicationTest extends IntegrationTest
      */
     public function can_confirm_complete_application()
     {
+        Event::fake();
         $this->application->fill(['name' => 'something','cover_letter' => 'something', 'code_example' => 'something', 'cv' => 'something']);
         $this->application->save();
         $response = $this->post($this->endpoint.'/confirm',[],$this->tokenHeader);
         $response->assertStatus(200);
         $this->assertNotNull(Application::first()->confirmed_at);
+
+        Event::assertDispatched(function (ApplicationConfirmed $event) {
+            $this->assertEquals($event->application->position->id,$this->position->id);
+            return $event->application->confirmed_at !== null;
+        });
 
         $response = $this->get($this->endpoint,$this->tokenHeader);
         $this->assertEquals('confirmed',$response->json('status'));

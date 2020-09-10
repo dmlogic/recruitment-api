@@ -26,11 +26,14 @@ class Application extends Model
         if(!array_filter([$this->name, $this->cover_letter, $this->code_example])) {
             return false;
         }
-
         if(!$this->cv && !$this->cv_upload) {
             return false;
         }
-
         return true;
+    }
+
+    public function position()
+    {
+        return $this->hasOne(Position::class,'reference','position_reference');
     }
 }

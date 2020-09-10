@@ -5,6 +5,7 @@ namespace Dmlogic\RecruitmentApi\Http\Controllers;
 use Illuminate\Http\Request;
 use Dmlogic\RecruitmentApi\Models\Application;
 use Illuminate\Routing\Controller as BaseController;
+use Dmlogic\RecruitmentApi\Events\ApplicationConfirmed;
 use Dmlogic\RecruitmentApi\Http\Requests\UpdateApplication;
 
 class SubmitApplication extends BaseController
@@ -41,6 +42,7 @@ class SubmitApplication extends BaseController
         }
         $application->confirmed_at = now();
         $application->save();
+        event(new ApplicationConfirmed($application));
         return response()
                 ->json(['message' => 'Your application has been confirmed']);
     }

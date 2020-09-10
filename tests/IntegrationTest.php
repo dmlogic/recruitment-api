@@ -44,6 +44,7 @@ abstract class IntegrationTest extends BaseTest
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('app.faker_locale', 'en_GB');
+        $app['config']->set('recruitment.endpoint', 'api');
 
         // // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testbench');

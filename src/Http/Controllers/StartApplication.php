@@ -25,14 +25,11 @@ class StartApplication extends BaseController
 
     public function create(NewApplication $request)
     {
-        $application = $request->createApplication();
-        $url = route('view',['uuid' => $application->uuid]);
+        $request->createApplication();
         return response()
                     ->json([
-                        'token' => $application->token,
-                        'application_url' => $url
-                    ],201)
-                    ->header('Location',$url);
+                        'message' => 'Your application has been created. Please check your email for more details.',
+                    ],201);
     }
 
 }
