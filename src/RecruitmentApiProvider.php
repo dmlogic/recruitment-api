@@ -10,8 +10,16 @@ class RecruitmentApiProvider extends ServiceProvider
 {
     public function boot()
     {
+        $this->registerConfig();
         $this->registerRoutes();
         $this->registerViews();
+    }
+
+    protected function registerConfig()
+    {
+        $this->publishes([
+           __DIR__.'/../config/recruitment.php' => config_path('recruitment.php'),
+        ]);
     }
 
     protected function registerViews()

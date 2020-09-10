@@ -26,8 +26,6 @@ This package does not make any assumptions about the notifications you'd like to
 
 * Create a Laravel 8.x app
 * `composer require dmlogic/recruitment-api`
-* Copy `views` to your `app/resources/views/vendor` folder and amend as required
+* `php artisan vendor:publish` and amend views and config values as required
 * The database tables will need creating. This will not happen automatically. You can copy migrations from "database/migrations" to your app or make tables manually
 * Implement appropriate listeners for `ApplicationCreated` and `ApplicationConfirmed`
-* Set a `recruitment.endpoint` config value if "api" is not appropriate
-* Set `recruitment.storage` to the name of your storage location if "cv_uploads" is not appropriate
