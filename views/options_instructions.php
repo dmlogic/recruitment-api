@@ -35,7 +35,7 @@ Format: Text (multi line acceptable)
 
 We accept PDF file formats up to 2Mb in size
 
-Please POST your file to:
+Please POST your `file` to:
 
 <?=route('upload', ['uuid' => $uuid])?>
 
