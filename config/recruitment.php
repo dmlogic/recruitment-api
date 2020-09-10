@@ -9,7 +9,7 @@ return [
     /**
      * The name of the Storage configuration to use for uploads
      */
-    'storage' => 'cv_upload',
+    'storage' => 'cv_uploads',
 
     /**
      * Who receives notifications of new submissions
