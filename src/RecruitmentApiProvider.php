@@ -12,7 +12,6 @@ class RecruitmentApiProvider extends ServiceProvider
     {
         $this->registerRoutes();
         $this->registerViews();
-        $this->registerBindings();
     }
 
     protected function registerViews()
@@ -29,9 +28,5 @@ class RecruitmentApiProvider extends ServiceProvider
         ], function () {
             $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
         });
-    }
-
-    protected function registerBindings()
-    {
     }
 }
