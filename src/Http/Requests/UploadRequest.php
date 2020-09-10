@@ -13,7 +13,7 @@ class UploadRequest extends FormRequest
         $file = $this->file('file');
         $application = $this->attributes->get('application');
         $filename = $file->hashName();
-        $file->storeAs($application->uuid, $filename, 'cv_uploads');
+        $file->storeAs($application->uuid, $filename, config('recruitment.storage','cv_uploads'));
         $application->cv_upload = $filename;
         $application->save();
     }

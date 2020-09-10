@@ -16,7 +16,6 @@ abstract class IntegrationTest extends BaseTest
         parent::setUp();
         $this->loadMigrationsFrom(DOC_ROOT.'database/migrations');
         $this->setFactoryLocation();
-        $this->bindDependencies();
     }
 
     protected function setFactoryLocation()

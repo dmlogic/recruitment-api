@@ -18,7 +18,6 @@ class UploadController extends BaseController
 
     public function upload(UploadRequest $request)
     {
-        \Log::info('upload',[$request->headers]);
         $request->storeFile();
         return response()
                 ->json(['message' => 'Your file was uploaded']);

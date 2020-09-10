@@ -30,3 +30,4 @@ This package does not make any assumptions about the notifications you'd like to
 * The database tables will need creating. This will not happen automatically. You can copy migrations from "database/migrations" to your app or make tables manually
 * Implement appropriate listeners for `ApplicationCreated` and `ApplicationConfirmed`
 * Set a `recruitment.endpoint` config value if "api" is not appropriate
+* Set `recruitment.storage` to the name of your storage location if "cv_uploads" is not appropriate

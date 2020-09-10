@@ -31,7 +31,6 @@ class NewApplication extends FormRequest
 
     protected function handleExistingApplication($existing)
     {
-        \Log::info('event.dispatch',[$existing]);
         event(new ApplicationCreated($existing,true));
         throw new HttpResponseException(
             response()->json(['errors' => ['An application for this role is already in progress. We have sent you a reminder of details']], 400)
