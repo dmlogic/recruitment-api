@@ -40,6 +40,10 @@ class SubmitApplication extends BaseController
             return response()
                     ->json(['errors' => ['This application is not yet complete']],400);
         }
+        if($application->confirmed_at) {
+            return response()
+                    ->json(['message' => 'This application has already been confirmed']);
+        }
         $application->confirmed_at = now();
         $application->save();
         event(new ApplicationConfirmed($application));

@@ -201,4 +201,18 @@ class SubmitApplicationTest extends IntegrationTest
         $response = $this->patchJson($this->endpoint,['name' => 'edited'],$this->tokenHeader);
         $response->assertStatus(422);
     }
+
+    /**
+     * @test
+     */
+    public function cannot_reconfirm()
+    {
+        Event::fake();
+        $this->application->fill(['name' => 'something','cover_letter' => 'something', 'code_example' => 'something', 'cv' => 'something']);
+        $this->application->confirmed_at = now();
+        $this->application->save();
+        $response = $this->post($this->endpoint.'/confirm',[],$this->tokenHeader);
+        $response->assertStatus(200);
+        Event::assertNotDispatched(ApplicationConfirmed::class);
+    }
 }
