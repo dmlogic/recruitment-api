@@ -17,8 +17,6 @@ abstract class IntegrationTest extends BaseTest
         $this->loadMigrationsFrom(DOC_ROOT.'database/migrations');
         $this->setFactoryLocation();
         $this->bindDependencies();
-        // app()->make('Seeds\GroupsSeeder')->run();
-        // app()->make('Seeds\UserUploadSeeder')->run();
     }
 
     protected function setFactoryLocation()
@@ -53,9 +51,5 @@ abstract class IntegrationTest extends BaseTest
             'database' => ':memory:',
             'prefix'   => '',
         ]);
-    }
-
-    protected function bindDependencies()
-    {
     }
 }
