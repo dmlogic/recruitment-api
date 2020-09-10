@@ -17,6 +17,10 @@ class RecruitmentApiProvider extends ServiceProvider
     protected function registerViews()
     {
         $this->loadViewsFrom(__DIR__.'/../views', 'recruitment');
+
+        $this->publishes([
+            __DIR__.'/../views' => resource_path('views/vendor/recruitment'),
+        ]);
     }
 
     protected function registerRoutes()
